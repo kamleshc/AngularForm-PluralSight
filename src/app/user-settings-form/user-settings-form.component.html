@@ -1,0 +1,97 @@
+<h2>User Settings</h2>
+<form class="mt-4" #f="ngForm" ngNativeValidate (ngSubmit)="onSubmit(f)">
+
+    <div class="form-group mb-2">
+        <label for="fullName">Name</label>
+        <input class="form-control" type="text" name="fullName" id="fullName" 
+                [(ngModel)]="userSettings.fullName" required #fullnameField="ngModel"
+                [class.error-field]="f.submitted && fullnameField.invalid"
+                (blur)="onBlur(fullnameField)" tabindex="1" />
+        <div [hidden]="!f.submitted || fullnameField.valid" class="alert alert-danger">
+            Enter a Full Name
+        </div>
+    </div>
+    <!--
+        #classTest
+        <p>{{ classTest.className }}</p>
+    -->
+    <!--
+        #propertyTest="ngModel"
+        <p>dirty: {{ propertyTest.dirty }}</p>
+        <p>pristine: {{ propertyTest.pristine }}</p>
+        <p>touched: {{ propertyTest.touched }}</p>
+        <p>Untouched: {{ propertyTest.untouched }}</p>
+        <p>valid: {{ propertyTest.valid }}</p>
+        <p>invalid: {{ propertyTest.invalid }}</p>
+    -->
+    <hr>
+
+    <div class="form-group mb-2">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="emailSpecialOffers" id="emailSpecialOffers"
+                    [(ngModel)]="userSettings.emailSpecialOffers" tabindex="2" />
+            <label class="form-check-label" for="emailSpecialOffers">
+                Email Special Offers
+            </label>
+        </div>
+    </div>
+    <hr>
+
+    <div class="form-group mb-2">
+        <p>Interface Style</p>
+        <div class="form-check-inline">            
+            <input class="form-check-input" type="radio" name="interfaceType" id="lightInterface" value="light"
+                    [(ngModel)]="userSettings.interfaceType" tabindex="3" />
+            <label class="form-check-label" for="lightInterface">
+                Light
+            </label>
+        </div>
+        <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="interfaceType" id="mediumInterface" value="medium"
+                    [(ngModel)]="userSettings.interfaceType" tabindex="3" />
+            <label class="form-check-label" for="mediumInterface">
+                Medium 
+            </label>
+        </div>
+        <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="interfaceType" id="darkInterface" value="dark"
+                [(ngModel)]="userSettings.interfaceType" tabindex="3" />
+            <label class="form-check-label" for="darkInterface">
+                Dark 
+            </label>
+        </div>         
+    </div>
+    <hr>
+
+    <div class="form-group mb-2">
+        <label for="subscriptionTypes">Subscription Type</label>
+        <select class="form-control" name="subscriptionTypes" id="subscriptionTypes"
+                [(ngModel)]="userSettings.subscriptionTypes" tabindex="4" >
+            <option value="">Select your Subcription</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Annual">Annual</option>
+            <option value="Lifetime">Lifetime</option>
+        </select>
+        <div class="invalid-feedback">Example invalid custom select feedback</div>
+    </div>
+    <hr>
+
+    <div class="form-group mb-2">
+        <label for="notes">Notes</label>
+        <textarea class="form-control" name="notes" id="notes" rows="3"
+                [(ngModel)]="userSettings.notes" tabindex="5"></textarea>
+    </div>
+    
+    
+    <div class="row mt-4">
+        <div class="col-md-auto align-self-center m-auto">
+            <button type="button" class="btn btn-light mr-4" tabindex="7">Reset</button>
+            <button type="submit" class="btn btn-primary" tabindex="6">Send</button>
+        </div>
+    </div>
+    
+</form>
+
+<div class="mt-4">
+{{ userSettings | json }}
+</div>
