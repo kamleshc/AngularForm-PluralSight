@@ -1,3 +1,7 @@
+# NPM Install
+
+First download this repository and run `npm install` on command promt.
+
 # AngularForm
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
